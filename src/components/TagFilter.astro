@@ -1,0 +1,56 @@
+---
+interface Props {
+  tags: string[]
+  normalizedTags: string[]
+  selectedTag?: string
+}
+const { tags, normalizedTags, selectedTag } = Astro.props as Props
+const pathname = Astro.url.pathname
+---
+
+<nav class="tag-filter">
+  <small>Sort posts by tag:</small>
+  <a href={pathname} class={!selectedTag ? 'selected' : ''}>All</a>
+  {
+    tags.length === normalizedTags.length &&
+      tags.map((tag, i) => (
+        <a
+          href={`${pathname}?tag=${encodeURIComponent(normalizedTags[i])}`}
+          class={selectedTag === normalizedTags[i] ? 'selected' : ''}
+        >
+          {tag}
+        </a>
+      ))
+  }
+</nav>
+
+<style>
+  .tag-filter {
+    font-size: var(--font-size-small);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .tag-filter a {
+    color: var(--color-primary);
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-xs);
+    margin: var(--spacing-xs);
+    cursor: pointer;
+    font-family: var(--font-family-mono);
+    background: transparent;
+    text-decoration: none;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .tag-filter a.selected {
+    color: var(--color-light);
+    border-color: var(--accent-primary);
+  }
+  .tag-filter a:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+  }
+</style>

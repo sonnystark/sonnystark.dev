@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content'
+import MainLayout from '../layouts/MainLayout.astro'
+import { SITE_TITLE } from '../consts'
+import ProjectCard from '../components/ProjectCard.astro'
+
+const allProjects = await getCollection('projects')
+const sortedProjects = allProjects.sort((a, b) => {
+  if (a.data.featured !== b.data.featured) {
+    return b.data.featured ? 1 : -1
+  }
+  return a.data.title.localeCompare(b.data.title)
+})
+---
+
+<MainLayout title={`Projects | ${SITE_TITLE}`}>
+  <h1>Projects</h1>
+  <section>
+    <ul class="projects-grid">
+      {sortedProjects.map((project) => <ProjectCard project={project} />)}
+    </ul>
+  </section>
+</MainLayout>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .projects-grid:only-child,
+  .projects-grid:has(:only-child) {
+    justify-items: center;
+  }
+
+  @media (max-width: 720px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+  }
+</style>

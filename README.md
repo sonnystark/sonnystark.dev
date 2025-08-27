@@ -1,62 +1,101 @@
-# Astro Starter Kit: Blog
+# sonnystark.dev – Portfolio & Blog
+
+A fast, modern, and retro-inspired portfolio and blog built with [Astro](https://astro.build/).
+
+## Features
+
+- ⚡️ Astro framework (content collections, layouts, components)
+- 🎨 CSS variables for theming (light/dark mode)
+- 🖼️ Responsive, retro/minimal design
+- 📝 Markdown content for posts and projects
+- 🏷️ Tag filtering and pagination for blog
+- 🧑‍💻 Accessibility and semantic HTML
+- 🔍 SEO-friendly with Open Graph and Twitter meta tags
+- 📰 RSS feed and sitemap
+- 🦾 Vitest unit tests for utilities
+- 🛡️ Security best practices for external links
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (or Bun)
+- npm, yarn, or bun
+
+### Installation
 
 ```sh
-bun create astro@latest -- --template blog
+npm install
+# or
+yarn install
+# or
+bun install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Development
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```sh
+npm run dev
+# or
+yarn dev
+# or
+bun dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Build
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```sh
+npm run build
+# or
+yarn build
+# or
+bun build
+```
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+### Preview
 
-Any static assets, like images, can be placed in the `public/` directory.
+```sh
+npm run preview
+# or
+yarn preview
+# or
+bun preview
+```
 
-## 🧞 Commands
+## Project Structure
 
-All commands are run from the root of the project, from a terminal:
+- `src/` – Source code
+  - `components/` – Reusable UI components
+  - `layouts/` – Page and post layouts
+  - `pages/` – Site pages (blog, projects, about, etc.)
+  - `content/` – Markdown content for posts, projects, blogroll
+  - `utils/` – Utility functions (tag filtering, reading time, etc.)
+  - `styles/` – CSS files (global, variables, fonts, reset)
+- `public/` – Static assets (images, fonts, favicon, manifest)
+- `tests/` – Vitest unit tests for utilities
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+## Accessibility & SEO
 
-## 👀 Want to learn more?
+- Semantic HTML elements (`<nav>`, `<main>`, `<header>`, `<footer>`, `<aside>`)
+- Descriptive alt attributes for images
+- Open Graph and Twitter meta tags for rich social sharing
+- Custom 404 page
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Deployment
 
-## Credit
+- Build with `astro build` and preview with `astro preview`
+- Deploy to Netlify, Vercel, or any static hosting provider
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## Social & Contact
+
+- See the Contact page for social links and ways to get in touch
+
+## License
+
+MIT
+
+---
+
+**Made by Sonny Stark.**
+
+For questions, feedback, or collaboration, feel free to reach out via the contact page or social links.

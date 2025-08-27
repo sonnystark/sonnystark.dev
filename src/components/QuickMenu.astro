@@ -1,0 +1,51 @@
+---
+interface Link {
+  href: string
+  label: string
+}
+
+const { links = [] as Link[], title = 'Quick menu:' } = Astro.props
+---
+
+<nav class="anchor-menu">
+  <span>{title}</span>
+  <ul>
+    {
+      links.map((link: Link) => (
+        <li>
+          <a href={link.href}>{link.label}</a>
+          {' | '}
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  span {
+    font-weight: 600;
+  }
+
+  .anchor-menu {
+    text-align: center;
+    margin-right: 0.5rem;
+    margin-bottom: 2rem;
+    min-width: 160px;
+    padding: 0.3rem;
+    border-radius: 0.4rem;
+    border: 2px solid var(--color-primary);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-small);
+  }
+  .anchor-menu ul {
+    display: inline-block;
+    margin: 0.2rem;
+  }
+  .anchor-menu li {
+    display: inherit;
+    margin-right: 0.8rem;
+  }
+</style>

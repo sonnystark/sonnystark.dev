@@ -1,63 +1,242 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import MainLayout from '../layouts/MainLayout.astro'
+import { SITE_TITLE, REPO_URL } from '../consts'
+import QuickMenu from '../components/QuickMenu.astro'
+import ContactBox from '../components/ContactBox.astro'
+const page = 'About'
+const quickMenuLinks = [
+  { href: '#about-me', label: 'About Me' },
+  { href: '#about-this-site', label: 'About this site' },
+  { href: '#get-in-touch', label: 'Get in touch' },
+]
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<MainLayout title={`${page} | ${SITE_TITLE}`}>
+  <h1>{page}</h1>
+  <QuickMenu links={quickMenuLinks} />
+  <h2 id="about-me">About Me</h2>
+  <h3>So, you want to know more about who I am?</h3>
+  <p>
+    My name is <b>Sonny Stark</b> and I'm happy to welcome you to this part of the internet. What are
+    the odds that you found this place among all the billions and billions of websites?
+  </p>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+  <p>
+    I'm a Swedish <a href="https://en.wikipedia.org/wiki/Expatriate" target="_blank">expat</a> who's
+    currently residing in Leipzig, Germany for the past 8 years. <em>Toll, oder</em>? I'm passionate
+    about personal growth, both mentally and intellectually, and I have a deep interest in web
+    development and design. My musical preference tends to lean towards the dark and aggressive side
+    and I have always found it both therapeutic and liberating to listen to that kind of music, but
+    also to write and perform it. It's immersive, confrontational, and healing all at once—truly
+    magical. History and religion are two other fields that I have a huge interest in.
+  </p>
+  <h3>What I do?</h3>
+  <p>
+    I read. Exploring anything and everything that has to do with history, be it pre-history,
+    medieval Europe or the cold war, I'll devour it. I know it's a cliché but I do love travelling
+    and subject myself to new places and cultures. It's truly fantastic and so educational. Coding
+    and building little projects, mainly. Hanging out with some of my favorite people and I try to
+    spend as much time as I possibly can with <i>the</i> most important person in my life because she
+    makes everything feel amazing and positive. That alone is not a small feat given the world we are
+    living in. Am I right? Music, of course, is a constant companion in my life.
+  </p>
+  <h3>What you will find here?</h3>
+  <p>
+    This space is a reflection of my experiences, discoveries, and passions. You'll find a mix of
+    personal anecdotes, insights, and topics that excite me. I believe in the freedom that comes
+    with having a blog, so I'll write about whatever inspires me. Feel free to explore, or if you
+    prefer, you can always come back later. This is a place for me to share and connect with others
+    who might find my journey interesting.
+  </p>
+  <h3>That's it!</h3>
+  <p>
+    So, I will just drop my contact info stuff down below and wish you a good day. Who knows, maybe
+    we will strike up a conversation about JavaScript one day, or maybe lose ourselves in a chat
+    about the tragic demise of the ancient Carthaginian Empire, or discuss the latest Cannibal
+    Corpse album. Time will tell. Either way, thanks for taking your time to read through all this
+    and see you around.
+  </p>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+  <h2 id="about-this-site">About this site</h2>
+  <h3>Inspiration and tech</h3>
+  <p>
+    I did a lot of research before I started building this site and I spent a considerably long time
+    fleshing out the design and theme I wanted. Let's say that I had a very specific look and feel
+    in mind and I think that if you would imagine a conjugation of <strong>Star Wars</strong> and <strong
+      >The Simpsons</strong
+    >, I'd say that you are pretty close. Maybe with a small pinch of Michael Jackson's <a
+      href="https://www.imdb.com/title/tt0095655/"
+      target="_blank">"Moonwalker"</a
+    >
+    <em>(the movie)</em>. In other words: an aesthetic representation of growing up during late 80's
+    and early 90's.
+  </p>
+  <p>
+    I do think that this <i>retro</i> style is done to death a bit so I didn't want to overdo it either.
+    In all honesty, I just wanted to get as far away as possible from all the millions of dev portfolios
+    riddled with over-engineering, interactivity galore, and the inconsistently consistent constant use
+    of <code>transform</code>, <code>transition</code>, and <code>animation</code>
+    <em>all over the place</em>.
+  </p>
+  <p>
+    For me, there is nothing more boring and less personal than those kind of portfolios. They don't
+    represent you or your skills - they just represent poor judgement and a lack of a design
+    structure, unfortunately. Or that, which I assume is even more common, it is the result of a
+    generic design culture that has been dominant for a while now <i
+      >(I'm looking at you Tailwind and Shadcn!)</i
+    > where everything has the same layout and by following that trend there's a sense that you have
+    done it the right way. Followed the rules, so to speak.
+  </p>
+  <p><strong>Wrong!</strong></p>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+  <p>
+    That's conformity, not creativity. I'm not saying that people who decide to create portfolios
+    like that lack skills. Far from it, and quite the opposite, but you should strive for creating
+    websites people actually want to spend time on and read about you instead of being bombarded
+    with movement and blinking things that makes you feel you are on a bad acid trip in Las Vegas
+    with no recollection of how you even got there in the first place. No one sticks around on a
+    portfolio site like that to actually learn about <em>you</em> and <em>your skills</em>. <strong
+      >No one!</strong
+    >.<br />
+    Keep it clean and personal and let your skills show in your projects instead.
+  </p>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+  <p>
+    Sorry about that, I just had to get it out of my system.<br />
+    Anyway, let's get back to <em>this</em>
+    portfolio. Shall we?<br />
+    I landed on building it with <a href="https://astro.build/" target="_blank">Astro</a> since the concept
+    of a static site builder for content-heavy websites was exactly what I needed. No need for React
+    or Next - just simple HTML, CSS and minimal JavaScript shipped to the client when and where needed.
+    That's it.<br />
+    With Astro's typed <a
+      href="https://docs.astro.build/en/reference/modules/astro-content/"
+      target="_blank">collections</a
+    >, <a href="https://docs.astro.build/en/basics/layouts/" target="_blank" '>layouts</a>, image
+    optimization, <a href="https://docs.astro.build/en/guides/routing/" target="_blank">routing</a>,
+    and <a href="https://docs.astro.build/en/concepts/islands/#what-is-an-island" target="_blank"
+      >island architecture</a
+    >, building this project was a fantastic experience making this a fast loading and lean website
+    without all the bloated bundles that comes with other frameworks and libraries.
+  </p>
+  <aside>
+    <h4>Here's a quick summary of the tech I used</h4>
+    <ul>
+      <li><span>&#10230; Build:</span> Astro, HTML, TypeScript, JavaScript.</li>
+      <li><span>&#10230; Design:</span> Modular CSS, responsive layout and a DRY methodology.</li>
+      <li><span>&#10230; Deployment:</span> Netlify.</li>
+      <li>
+        <span>&#10230; Images:</span>
+        <a href="https://pixabay.com/" target="_blank">Pixabay</a> and <a
+          href="https://www.rawpixel.com/">Rawpixel</a
+        > (open source and free to use collections of photos and artwork).
+      </li>
+      <li>
+        <span>&#10230; CMS:</span> Simple flat-files and folders using .MD and .MDX for all posts, blogroll
+        and other static content.
+      </li>
+    </ul>
+  </aside>
+
+  <h3>Typography</h3>
+  <p>
+    This was almost the hardest part of the design process. I think I spent way too much time
+    getting lost in the myriad of fonts and combination of fonts than I'd have liked. But, I think
+    it is a very important part of the brand of the site so it had to be done. Eventually, I think I
+    struck a good balance that was pleasing for the eye and was a good match with my overall design
+    vision.
+    <br />
+    I use <strong>Rubik</strong> by <a href="https://hfs-studio.com/" target="_blank"
+      >Hubert & Fischer</a
+    > as my main font combined with <strong>Packygreat</strong> by <a
+      href="https://graphicxell.com/"
+      target="_blank">Graphicxell</a
+    > for all headings and, lastly, the beautiful <strong>CommitMono</strong> by <a
+      href="https://commitmono.com/"
+      target="_blank">Eigil Nikolajsen</a
+    > for all mono demanding text (e.g the <code>code</code> and <small>small</small> tags) including
+    some links and other bits around the site. It's by far my favourite mono style font and I use it
+    in my terminal as well as my IDE.
+  </p>
+  <h3>The future</h3>
+  <p>
+    As for all projects, and I think it's even more true when it comes to your personal portfolio
+    site, this will never be completely finished and I'm ok with that. In fact, I think there's
+    value in that. You should keep your portfolio open to change and use it as a dumping ground for
+    new things you learn along the way. This is your space, so why not use it as your private
+    playground (in moderation, of course). Right?<br />
+    I mean, as you keep developing and learn new things, use this project to implement them and tinker
+    with what you have already accomplished. Improve it. Build on it. While we are at it, if you want
+    to check out the <a href={REPO_URL} target="_blank">source code</a> for this portfolio, be my guest.
+    You are welcome to steal, borrow, or copy anything you want <i>(no, not you bot!)</i> as long as
+    you use it well and it helps you develop. Personally, I love looking at other people's code and figure
+    out what they are doing and why. It's very educational.<br />
+    <b>And remember: the internet is all about learning, sharing and connecting.</b>
+  </p>
+  <aside>
+    <h4>So, here are some things that I will keep working on</h4>
+    <ul>
+      <li>
+        <span>&#10230; Fluid responsive design:</span> My goal is to fully implement a fluid responsive
+        design to make the site scale better and more consistently. I really love the approach presented
+        by <a href="https://utopia.fyi/" target="_blank">Utopia</a>. But I feel that I need to spend
+        some time with it to really grasp it before I adapt it.
+      </li>
+      <li>
+        <span>&#10230; Astro:</span> I'm very excited to keep digging deeper and learn more about it
+        to improve this portfolio.
+      </li>
+      <li>
+        <span>&#10230; Reusability:</span> I know there are some things that I could easily turn into
+        components that are now hard coded instead. My aim is to make this site as efficient and smooth
+        as possible. In time.
+      </li>
+      <li>
+        <span>&#10230; Logo:</span> I am quite decent when it comes to graphic design and things like
+        that but logos, that's never been something I'm good at. If you happen to be good at it, or if
+        you know someone who is, shoot me an email and let's work something out. I need a new logo.
+      </li>
+      <li>
+        <span>&#10230; Details:</span> Most of the things I will change will most likely go unnoticed
+        because it won't affect the result in a way anyone will notice. It's all about tinkering and
+        finding better and more efficient solutions to things.
+      </li>
+      <li>More to come...</li>
+    </ul>
+  </aside>
+  <p>
+    Thank you for making it all the way down here. If you have any questions or thoughts, make sure
+    to send them my way.
+  </p>
+
+  <h2 id="get-in-touch">Get in touch</h2>
+  <ContactBox />
+</MainLayout>
+
+<style>
+  aside {
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0 var(--spacing-lg) 0;
+    background-color: #111111;
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--border-radius-md);
+  }
+  li {
+    margin-bottom: var(--spacing-md);
+  }
+  :where(ul) {
+    list-style: none;
+    padding: var(--spacing-md);
+  }
+  :where(li > span) {
+    font-weight: 900;
+  }
+  :where(li > a) {
+    color: var(--accent-primary);
+  }
+  h4 {
+    color: var(--accent-primary);
+    padding-bottom: var(--spacing-sm);
+  }
+</style>

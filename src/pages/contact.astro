@@ -1,0 +1,23 @@
+---
+import MainLayout from '../layouts/MainLayout.astro'
+import ContactBox from '../components/ContactBox.astro'
+import { SITE_TITLE } from '../consts'
+---
+
+<MainLayout title={`Contact | ${SITE_TITLE}`}>
+  <h1>Contact</h1>
+  <p>
+    Feel free to reach out to me through any of the channels below. I'm always happy to connect with
+    fellow developers, musicians, or anyone interested in discussing technology, music, or life in
+    general.
+  </p>
+  <ContactBox />
+</MainLayout>
+
+<style>
+  p {
+    max-width: 65ch;
+    margin: 0 auto var(--spacing-lg);
+    text-align: center;
+  }
+</style>

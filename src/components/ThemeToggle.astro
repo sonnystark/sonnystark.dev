@@ -1,0 +1,42 @@
+<button id="theme-toggle" aria-label="Toggle dark mode">
+  <span id="theme-toggle-label">🌞</span>
+</button>
+
+<script>
+  const root = document.documentElement
+  const themeToggle = document.getElementById('theme-toggle')
+  const label = document.getElementById('theme-toggle-label')
+
+  function setTheme(theme: string) {
+    root.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+    if (label) {
+      label.textContent = theme === 'dark' ? '🌙' : '🌞'
+    }
+  }
+
+  // Preferred theme is light
+  const saved = localStorage.getItem('theme')
+  if (saved) {
+    setTheme(saved)
+  } else {
+    setTheme('light')
+  }
+
+  if (themeToggle) {
+    themeToggle.onclick = () => {
+      const current = root.getAttribute('data-theme')
+      const next = current === 'dark' ? 'light' : 'dark'
+      setTheme(next)
+    }
+  }
+</script>
+
+<style>
+  button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+</style>

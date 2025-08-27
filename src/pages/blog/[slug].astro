@@ -1,0 +1,39 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content'
+import PostLayout from '../../layouts/PostLayout.astro'
+import { getRelatedPosts } from '../../utils/getRelatedPosts'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts')
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }))
+}
+
+type Props = CollectionEntry<'posts'> & { content: string }
+
+const post = Astro.props as Props
+const { Content } = await render(post)
+
+// Filter out any undefined values from the tags array
+const filteredTags = post.data.tags?.filter((tag): tag is string => tag !== undefined) || []
+
+// Fetch related posts using the utility function
+const relatedPosts = await getRelatedPosts(post.slug, filteredTags)
+
+// Convert pubDate and updatedDate to strings
+const formattedPostData = {
+  ...post.data,
+  pubDate: post.data.pubDate.toISOString(),
+  updatedDate: post.data.updatedDate ? post.data.updatedDate.toISOString() : undefined,
+  heroImage: post.data.heroImage?.src, // Extract the src property from the heroImage object
+  content: post.body || '', // Ensure content is always defined
+  relatedPosts, // Pass the related posts
+  tags: filteredTags, // Ensure tags is always defined and filtered
+}
+---
+
+<PostLayout {...formattedPostData}>
+  <Content />
+</PostLayout>

@@ -1,0 +1,78 @@
+---
+import {
+  EMAIL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  BLUESKY_URL,
+  MASTODON_URL,
+  BANDCAMP_URL,
+  RSS_URL,
+  CODEPEN_URL,
+} from '../consts'
+---
+
+<div class="contact-box">
+  <div class="contact-item">
+    <h3>Email</h3>
+    <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+  </div>
+
+  <div class="contact-item">
+    <h3>Elsewhere</h3>
+    <ul class="social-links">
+      <li>
+        <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"> GitHub </a>
+      </li>
+      <li>
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer"> LinkedIn </a>
+      </li>
+      <li>
+        <a href={CODEPEN_URL} target="_blank" rel="noopener noreferrer"> CodePen </a>
+      </li>
+      <li>
+        <a href={BLUESKY_URL} target="_blank" rel="noopener noreferrer"> Bluesky </a>
+      </li>
+      <li>
+        <a href={MASTODON_URL} target="_blank" rel="noopener noreferrer"> Mastodon </a>
+      </li>
+      <li>
+        <a href={BANDCAMP_URL} target="_blank" rel="noopener noreferrer"> Bandcamp </a>
+      </li>
+      <li>
+        <a href={RSS_URL} rel="noopener noreferrer"> Rss </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .contact-box {
+    margin: var(--spacing-lg) 0;
+  }
+  .contact-item {
+    margin-bottom: var(--spacing-md);
+  }
+  .contact-item h3 {
+    text-align: left;
+  }
+
+  .social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .social-links a {
+    text-decoration: none;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-small);
+    transition: opacity 0.2s ease;
+  }
+
+  .social-links a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+</style>

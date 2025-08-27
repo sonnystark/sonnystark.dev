@@ -1,0 +1,49 @@
+:root {
+  /* Theming */
+  --color-primary: #111111;
+  --color-secondary: #000000;
+  --color-light: #e1e1e1;
+  --accent-primary: #ffb65f;
+  --color-alt: #fff8d4;
+  --color-prose: #fbf3d5;
+  --bg-main: #ff9900;
+  --bg-svg: url('/assets/dirt-black.svg');
+
+  /* Layout */
+  --content-width: 720px;
+  --container-padding: 1em;
+  --border-radius-sm: 2px;
+  --border-radius-md: 8px;
+
+  /* Typography */
+  --font-family-display: 'Packygreat', sans-serif;
+  --font-family-base: 'Rubik', sans-serif;
+  --font-family-mono: 'CommitMono', monospace;
+  --font-size-base: 1rem;
+  --font-size-small: 0.8rem;
+
+  /* Font Sizes */
+  --h1-size: 3.052em;
+  --h2-size: 2.441em;
+  --h3-size: 1.953em;
+  --h4-size: 1.563em;
+  --h5-size: 1.25em;
+
+  /* Spacing */
+  --spacing-xs: 0.3em;
+  --spacing-sm: 0.5em;
+  --spacing-md: 1em;
+  --spacing-lg: 2em;
+  --spacing-xl: 3em;
+}
+
+[data-theme='dark'] {
+  --color-primary: #e1e1e1;
+  --color-secondary: #fff8d4;
+  --color-light: #ff9900;
+  --accent-primary: #ffb65f;
+  --color-alt: #fff8d4;
+  --color-prose: #010101;
+  --bg-main: #111111;
+  --bg-svg: url('/assets/dirt-yellow.svg');
+}

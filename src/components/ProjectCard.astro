@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import { truncateText } from '../utils/truncateText'
+
+interface Props {
+  project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+const { title, description, githubUrl, liveUrl, heroImage } = project.data
+const maxDescriptionLength = 120
+---
+
+<li class="project-card">
+  <article>
+    {
+      heroImage && (
+        <Image width={720} height={360} src={heroImage} alt={`Screenshot or logo for ${title}`} />
+      )
+    }
+    <header>
+      <h2>
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer">{title}</a>
+      </h2>
+    </header>
+    <p class="description">{truncateText(description, maxDescriptionLength)}</p>
+    <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="read-more">
+      GitHub <span class="sr-only">for {title}</span>
+    </a>
+    {
+      liveUrl && (
+        <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="read-more">
+          Live <span class="sr-only">for {title}</span>
+        </a>
+      )
+    }
+  </article>
+</li>
+
+<style>
+  .project-card {
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-primary, #111);
+    border-radius: var(--border-radius-md, 8px);
+    font-family: var(--font-family-base, 'Courier New', Courier, monospace);
+    max-width: 350px;
+    margin-bottom: var(--spacing-lg, 2em);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card img {
+    width: 100%;
+    border-radius: var(--border-radius-md, 8px);
+    margin-bottom: var(--spacing-md, 1em);
+    border: 1px solid var(--color-primary, #ffb65f);
+  }
+
+  .project-card h2 {
+    margin: 0;
+    text-align: left;
+    font-size: 1.4rem;
+  }
+
+  .project-card h2 a {
+    text-decoration: none;
+    color: var(--color-primary, #111);
+  }
+
+  .project-card .description {
+    margin: var(--spacing-sm, 0.5em) 0;
+    font-family: var(--font-family-base, 'Courier New', Courier, monospace);
+    font-size: 0.95rem;
+    color: var(--color-secondary, #222);
+  }
+
+  .project-card .read-more {
+    display: inline-block;
+    margin-top: var(--spacing-sm, 0.5em);
+    font-family: var(--font-family-mono, 'Courier New', Courier, monospace);
+    font-size: var(--font-size-small, 0.95rem);
+    color: var(--color-primary);
+    text-decoration: underline;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .project-card .read-more:hover {
+    text-decoration: none;
+    color: var(--color-primary, #111);
+  }
+</style>

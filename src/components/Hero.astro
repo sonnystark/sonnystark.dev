@@ -1,0 +1,72 @@
+---
+import '../styles/global.css'
+---
+
+<h1>Welcome, you!</h1>
+<section class="hero">
+  <div class="hero-row">
+    <div class="hero-text">
+      <h2>A short briefing</h2>
+      <p>I'm <b>Sonny Stark</b> and you are about to enter my domain...</p>
+      <p>
+        ...is what I would have said if we were playing <a
+          href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons"
+          target="_blank">Dungeons & Dragons</a
+        > right now. Alas, we are not. But I'm happy to see that you found your way to the home of my
+        portfolio and blog. Here you will find all the thoughts and <a href="/blog"
+          >rants of my opinionated brain</a
+        >
+        as well as <a href="/projects">all my projects.</a>
+      </p>
+      <p>
+        If you are interested in how this site was built, you will find it <a
+          href="/about#about-this-site">right here.</a
+        > Oh, and while you're at it, and if you are interested in learning more about me, you will find
+        more than you ever needed there as well. If you have any questions or would like to get in touch,
+        you will find all that information <a href="/contact">right over here</a>.
+      </p>
+      <p>
+        With that being said, enjoy your stay here! When you are done, don't forget to check out <a
+          href="/blogroll">these fantastic poeple</a
+        > whose brilliance inspire me on a daily basis.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  h1 {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    font-size: clamp(5rem, -5.782rem + 21.702vw, 12.55rem);
+    text-shadow:
+      1px 1px 0px var(--accent-primary),
+      1px 2px 0px var(--accent-primary),
+      1px 3px 0px var(--accent-primary),
+      1px 4px 0px var(--accent-primary),
+      1px 5px 0px var(--accent-primary),
+      1px 6px 0px var(--accent-primary),
+      1px 10px 5px rgba(16, 16, 16, 0.5),
+      1px 15px 10px rgba(16, 16, 16, 0.4),
+      1px 20px 30px rgba(16, 16, 16, 0.3),
+      1px 25px 50px rgba(16, 16, 16, 0.2);
+  }
+
+  section {
+    margin-top: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+    }
+  }
+</style>

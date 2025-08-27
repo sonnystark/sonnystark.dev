@@ -1,0 +1,221 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro'
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts'
+import '../styles/global.css'
+import { formattedDate } from '../utils/formattedDate'
+import { estReadingTime } from '../utils/estReadingTime'
+
+interface Props {
+  title: string
+  description?: string
+  pubDate: string
+  updatedDate?: string
+  heroImage?: string
+  author: string
+  tags?: string[]
+  relatedPosts?: { slug: string; title: string; date: Date }[] // <-- date: Date
+  content: string
+}
+
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  pubDate,
+  updatedDate,
+  heroImage,
+  author,
+  tags,
+  relatedPosts,
+  content,
+} = Astro.props as Props
+
+const readingTime = estReadingTime(content)
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      body {
+        background-color: var(--color-prose);
+      }
+      h1 {
+        font-size: var(--h1-size);
+        margin-bottom: var(--spacing-sm);
+        text-align: center;
+      }
+      main {
+        width: 100%;
+        max-width: var(--content-width);
+        margin: auto;
+        position: relative;
+      }
+
+      header,
+      .content-container {
+        border-bottom: 1px solid var(--black-secondary);
+      }
+      hr {
+        border: 1px solid var(--color-secondary);
+        margin: var(--spacing-md) auto;
+        width: calc(var(--content-width) / 1.5);
+      }
+      .hero-image {
+        width: 100%;
+        overflow: hidden;
+        border-radius: var(--border-radius-sm);
+        opacity: 0.8;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius-md);
+      }
+
+      .prose {
+        padding: var(--spacing-md);
+      }
+      .date {
+        font-size: var(--font-size-small);
+        color: var(--color-secondary);
+        text-align: center;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .last-updated-on {
+        font-style: italic;
+        display: block;
+        margin-top: var(--spacing-xs);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        justify-content: center;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .tag {
+        /* background-color: var(--color-primary); */
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border: 1px solid var(--color-primary);
+        border-radius: var(--border-radius-md);
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-small);
+        color: var(--color-primary);
+      }
+
+      .content-container {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .related-posts {
+        margin-top: var(--spacing-lg);
+      }
+
+      .related-posts h3 {
+        font-size: var(--h3-size);
+        margin-bottom: var(--spacing-sm);
+        text-align: left;
+      }
+
+      .related-posts ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .related-posts li {
+        margin-bottom: var(--spacing-sm);
+        text-transform: uppercase;
+      }
+
+      .related-posts a {
+        color: var(--color-secondary);
+        font-size: var(--font-size-small);
+        font-family: var(--font-family-mono);
+        text-decoration: none;
+      }
+
+      .related-posts a:hover {
+        text-decoration: underline;
+      }
+
+      .related-posts-date {
+        font-weight: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <article>
+        {heroImage && <img src={heroImage} alt={title} class="hero-image" />}
+        <header>
+          <h1>{title}</h1>
+          <div class="date">
+            <small>
+              Published on <strong> {formattedDate({ date: new Date(pubDate) })}</strong> | Author: <b
+                >{author}</b
+              >
+              | Estimated reading time: <b>{readingTime}</b> min
+              {
+                updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on {formattedDate({ date: new Date(updatedDate) })}
+                  </div>
+                )
+              }
+            </small>
+          </div>
+          <div class="tags">
+            {
+              tags?.map((tag) => (
+                <a class="tag" href={`/blog/?tag=${encodeURIComponent(tag)}`}>
+                  {tag}
+                </a>
+              ))
+            }
+          </div>
+        </header>
+        <hr />
+        <div class="content-container">
+          <div class="prose">
+            <slot />
+          </div>
+          <hr />
+        </div>
+        {
+          relatedPosts && relatedPosts.length > 0 && (
+            <aside class="related-posts">
+              <h3>Related Posts</h3>
+              <ul>
+                {relatedPosts.map((post) => (
+                  <li id={post.slug}>
+                    <a href={`/blog/${post.slug}`}>
+                      &rarr; {post.title}
+                      {post.date && !isNaN(post.date.getTime()) && (
+                        <>
+                          {' | '}
+                          <span class="related-posts-date">
+                            {formattedDate({ date: post.date })}
+                          </span>
+                        </>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )
+        }
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>

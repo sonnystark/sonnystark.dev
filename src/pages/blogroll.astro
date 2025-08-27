@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content'
+import MainLayout from '../layouts/MainLayout.astro'
+import BlogrollCard from '../components/BlogrollCard.astro'
+import { SITE_TITLE } from '../consts'
+
+const blogroll = await getCollection('blogroll')
+---
+
+<MainLayout title={`Blog'n'roll | ${SITE_TITLE}`}>
+  <h1>Blog'n'roll</h1>
+  <div class="intro">
+    <p>
+      Here are some blogs and websites I enjoy reading on a regular basis and find inspiring. They
+      are all such great content creators (i know, I hate that term too) and I'm always learning
+      something new every time one of their posts drop into my rss reader or inbox. Check them out
+      for great content on web development, design, music, politics, technology and more.
+    </p>
+    <small>
+      <i
+        ><b>DISCLAIMER:</b> This list of blogs will most likely be updated infinitely since there are
+        so many fantastic and creative writers out there and I can't possibly have discovered them all
+        yet. With that said: go and feed your brain!</i
+      >
+    </small>
+  </div>
+  <div class="blogroll-grid">
+    {
+      blogroll.map((blog) => (
+        <BlogrollCard
+          title={blog.data.title}
+          description={blog.data.description}
+          link={blog.data.link}
+          motivation={blog.data.motivation}
+        />
+      ))
+    }
+  </div>
+</MainLayout>
+
+<style>
+  .blogroll-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+
+  .intro {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  @media (max-width: 720px) {
+    .blogroll-grid {
+      gap: var(--spacing-md);
+    }
+  }
+</style>
