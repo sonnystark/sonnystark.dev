@@ -5,23 +5,25 @@ import ThemeToggle from './ThemeToggle.astro'
 ---
 
 <header>
+  <figure class="logo">
+    <a href="/"><img src="/logo/sonny-stark-logo-new.svg" alt="Sonny Stark Logo" /></a>
+  </figure>
+
   <nav>
-    <div class="logo">
-      <a href="/"><img src="/logo/sonnystark-logo-white.svg" alt="Sonny Stark Logo" /></a>
-    </div>
     <div class="nav-actions">
       <div class="internal-links">
-        <ThemeToggle />
         <HeaderLink href="/">Home</HeaderLink>
         <HeaderLink href="/about">About</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
         <HeaderLink href="/projects">Projects</HeaderLink>
         <HeaderLink href="/blogroll">Blog'n'roll</HeaderLink>
         <HeaderLink href="/contact">Contact</HeaderLink>
+        <ThemeToggle />
       </div>
     </div>
   </nav>
 </header>
+
 <style>
   header {
     border-bottom: 3px solid var(--accent-primary);
@@ -29,27 +31,45 @@ import ThemeToggle from './ThemeToggle.astro'
     margin: 0;
     padding: 0 1em;
     background: #111111 url('/assets/dirt-yellow.svg');
+
+    /* NEW: make header a positioned flex container so we can absolutely center .nav-actions */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* logo stays left */
+    position: relative;
   }
+
   nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    width: 100%;
   }
+
   .logo img {
     padding: 1em 1.1em;
-    width: 460px;
+    max-width: 350px;
     height: auto;
   }
+
   .nav-actions {
     display: flex;
     align-items: center;
     gap: 1.5em;
+
+    /* NEW: center the group horizontally within the header */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%); /* vertically center relative to header's height */
   }
+
   .internal-links {
     display: flex;
     align-items: center;
     gap: 0.5em;
   }
+
   nav a {
     padding: 0.3em 1.1em;
     color: var(--accent-primary);
@@ -62,23 +82,30 @@ import ThemeToggle from './ThemeToggle.astro'
   nav a.active {
     border-bottom-color: var(--accent-primary);
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     nav {
       flex-direction: column;
       align-items: stretch;
       padding-bottom: var(--spacing-xs);
     }
     .logo img {
-      /* width: 220px; */
+      max-width: 220px;
       margin: auto;
       padding: 0.7em 0.5em;
     }
+
+    /* MOBILE: disable absolute positioning so layout stacks naturally */
     .nav-actions {
+      position: static;
+      left: auto;
+      top: auto;
+      transform: none;
       flex-direction: column;
       gap: 0.7em;
       align-items: center; /* Center actions horizontally */
       width: 100%;
     }
+
     .internal-links {
       font-size: var(--font-size-small);
       flex-direction: row; /* Keep links in a row */
