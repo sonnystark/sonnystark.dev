@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # sonnystark.dev – Portfolio & Blog
 
 A fast, modern, and retro-inspired portfolio and blog built with [Astro](https://astro.build/).
@@ -100,7 +99,3 @@ MIT
 **Made by Sonny Stark.**
 
 For questions, feedback, or collaboration, feel free to reach out via the contact page or social links.
-=======
-# sonnystark.dev
-My portfolio and blog.
->>>>>>> 530339a60af102f0bab31835c6b564364265a2ae
