@@ -2,6 +2,8 @@
 
 A fast, modern, and retro-inspired portfolio and blog built with [Astro](https://astro.build/).
 
+This is my personal portfolio. Check it out here: [sonnystark.dev](https://sonnystark.dev).
+
 ## Features
 
 - ⚡️ Astro framework (content collections, layouts, components)
@@ -89,6 +91,7 @@ bun preview
 ## Social & Contact
 
 - See the Contact page for social links and ways to get in touch
+- For questions and/or issues, contact me at contact@sonnystark.dev
 
 ## License
 
