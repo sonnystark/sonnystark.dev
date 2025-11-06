@@ -31,11 +31,9 @@ import ThemeToggle from './ThemeToggle.astro'
     margin: 0;
     padding: 0 1em;
     background: #111111 url('/assets/dirt-yellow.svg');
-
-    /* NEW: make header a positioned flex container so we can absolutely center .nav-actions */
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* logo stays left */
+    justify-content: flex-start;
     position: relative;
   }
 
@@ -55,13 +53,11 @@ import ThemeToggle from './ThemeToggle.astro'
     display: flex;
     align-items: center;
     gap: 1.5em;
-
-    /* NEW: center the group horizontally within the header */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: 50%;
-    transform: translate(-50%, -50%); /* vertically center relative to header's height */
+    transform: translate(-50%, -50%);
   }
 
   .internal-links {
@@ -74,6 +70,7 @@ import ThemeToggle from './ThemeToggle.astro'
     padding: 0.3em 1.1em;
     color: var(--accent-primary);
     border-bottom: 4px solid transparent;
+    font-size: 1.2rem;
     text-decoration: none;
     font-family: Packygreat, sans-serif;
     font-weight: 600;
@@ -94,7 +91,6 @@ import ThemeToggle from './ThemeToggle.astro'
       padding: 0.7em 0.5em;
     }
 
-    /* MOBILE: disable absolute positioning so layout stacks naturally */
     .nav-actions {
       position: static;
       left: auto;
@@ -108,11 +104,11 @@ import ThemeToggle from './ThemeToggle.astro'
 
     .internal-links {
       font-size: var(--font-size-small);
-      flex-direction: row; /* Keep links in a row */
+      flex-direction: row;
       flex-wrap: wrap;
       gap: 0.3em;
       width: 100%;
-      justify-content: center; /* Center links horizontally */
+      justify-content: center;
     }
     nav a.active {
       border-bottom-color: transparent !important;
