@@ -15,19 +15,19 @@
     "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.9",
-    "@astrojs/rss": "^4.0.13",
+    "@astrojs/mdx": "^4.3.12",
+    "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
-    "astro": "^5.15.3",
+    "astro": "^5.16.4",
     "astro-icon": "^1.1.5",
     "prettier-plugin-astro": "^0.14.1",
-    "sharp": "^0.34.4",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/node": "^24.10.0",
-    "eslint-plugin-oxlint": "^1.26.0",
-    "oxlint": "^1.26.0",
+    "@types/node": "^24.10.1",
+    "eslint-plugin-oxlint": "^1.31.0",
+    "oxlint": "^1.31.0",
     "prettier": "3.6.2",
     "vitest": "^3.2.4"
   }
