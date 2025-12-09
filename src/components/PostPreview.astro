@@ -11,9 +11,7 @@ interface Props {
 const { post } = Astro.props
 const { title, pubDate, author, description } = post.data
 
-// Ensure pubDate is a Date object
-const date = new Date(pubDate)
-const formattedPubDate = formattedDate({ date })
+const formattedPubDate = formattedDate({ date: pubDate })
 
 const maxDescriptionLength = 220 // Set the maximum length for the description excerpt
 const readingTime = estReadingTime(post.content || '') // Ensure content is always a string
@@ -22,7 +20,7 @@ const readingTime = estReadingTime(post.content || '') // Ensure content is alwa
 <article>
   <header>
     <h2><a href={`/blog/${post.slug}`}>{title}</a></h2>
-    <small>{formattedPubDate} | Author: {author} | {readingTime} min read</small>
+    <small>Published: {formattedPubDate} | Author: {author} | {readingTime} min read</small>
   </header>
   {description && <p class="description">{truncateText(description, maxDescriptionLength)}</p>}
   <a href={`/blog/${post.slug}`} class="read-more">

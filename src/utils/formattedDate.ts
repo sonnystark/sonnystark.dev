@@ -1,11 +1,11 @@
 interface Props {
-  date: Date
+  date: Date | string
 }
 
 export function formattedDate({ date }: Props): string {
-  return date.toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
+  const d = date instanceof Date ? date : new Date(date)
+  if (isNaN(d.getTime())) {
+    return ''
+  }
+  return d.toISOString().slice(0, 10)
 }
