@@ -6,11 +6,9 @@ const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3)
 
+// Sort projects by pubDate (newest first)
 const projects = (await getCollection('projects'))
-  .sort(
-    (a, b) =>
-      Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title)
-  )
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3)
 ---
 
@@ -22,7 +20,8 @@ const projects = (await getCollection('projects'))
       {
         posts.map((post) => (
           <li>
-            <a href={`/blog/${post.slug}`}>&rarr;
+            <a href={`/blog/${post.slug}`}>
+              &rarr;
               {post.data.title} |{' '}
               <span class="formatted-date">{formattedDate({ date: post.data.pubDate })}</span>
             </a>
@@ -37,7 +36,8 @@ const projects = (await getCollection('projects'))
       {
         projects.map((project) => (
           <li>
-            <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer">&rarr;
+            <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer">
+              &rarr;
               {project.data.title} &nearr;
             </a>
           </li>
@@ -80,14 +80,11 @@ const projects = (await getCollection('projects'))
     transition: background 0.2s;
   }
 
-  }
-
   li:last-child {
-    border-bottom: none;
+    /*border-bottom: none;*/
   }
 
   a {
-    /* color: var(--color-primary); */
     text-transform: uppercase;
     /* text-decoration: none; */
     font-family: var(--font-family-mono);

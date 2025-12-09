@@ -23,6 +23,7 @@ export const collections = {
         liveUrl: z.string().url().optional(),
         heroImage: image().optional(),
         featured: z.boolean().default(false),
+        pubDate: z.coerce.date(),
       }),
   }),
   blogroll: defineCollection({
