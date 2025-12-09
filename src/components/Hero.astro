@@ -7,6 +7,11 @@ import '../styles/global.css'
   <div class="hero-row">
     <div class="hero-text">
       <h2>A short briefing</h2>
+      <img
+        src="/assets/sonny_face.webp"
+        alt="A dithered image of Sonny Stark's face"
+        class="hero-face"
+      />
       <p>I'm <b>Sonny Stark</b> and you are about to enter my domain...</p>
       <p>
         ...is what I would have said if we were playing <a
@@ -71,16 +76,54 @@ import '../styles/global.css'
     margin-top: 0;
   }
 
-  @media (max-width: 900px) {
+  .hero-row {
+    display: flex;
+  }
+
+  .hero-text {
+    overflow: visible;
+  }
+
+  .hero-face {
+    float: left;
+    width: clamp(220px, 20vw, 320px);
+    margin: 0.5rem 0.1rem 0.1rem 0.1rem;
+    opacity: 0.8;
+    display: block;
+    shape-outside: url('/assets/sonny_face.webp');
+    -webkit-shape-outside: url('/assets/sonny_face.webp');
+    shape-margin: 0.9rem;
+    -webkit-shape-margin: 1.3rem;
+    object-fit: contain;
+  }
+
+  @media (max-width: 570px) {
     .hero-row {
       flex-direction: column;
       align-items: flex-start;
-      gap: var(--spacing-md);
+      gap: var(--spacing-md, 1rem);
     }
     h1 {
       word-break: normal;
       overflow-wrap: normal;
       text-wrap: balance;
+    }
+
+    .hero-face {
+      float: none;
+      width: 100%;
+      height: auto;
+      margin: 0 0 var(--spacing-md, 1rem) 0;
+      display: block;
+
+      /* disable shape-outside on small screens (no wrapping needed) */
+      shape-outside: none;
+      -webkit-shape-outside: none;
+      shape-margin: 0;
+      -webkit-shape-margin: 0;
+
+      /* ensure image scales cleanly across width */
+      object-fit: contain;
     }
   }
 </style>
