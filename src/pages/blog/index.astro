@@ -7,7 +7,7 @@ import TagFilter from '../../components/TagFilter.astro'
 import { getAllTags, filterPostsByTag } from '../../utils/blogFilters'
 import { paginatePosts } from '../../utils/paginatePosts'
 
-const POSTS_PER_PAGE = 6
+const POSTS_PER_PAGE = 5
 const page = Number(Astro.url.searchParams.get('page')) || 1
 
 const allPosts = await getCollection('posts')

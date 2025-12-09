@@ -20,7 +20,7 @@ interface Props {
 }
 
 const {
-  title,
+  title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   pubDate,
   updatedDate,
@@ -38,117 +38,6 @@ const readingTime = estReadingTime(content)
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
-    <style>
-      body {
-        background-color: var(--color-prose);
-      }
-      h1 {
-        font-size: var(--h1-size);
-        margin-bottom: var(--spacing-sm);
-        text-align: center;
-      }
-      main {
-        width: 100%;
-        max-width: var(--content-width);
-        margin: auto;
-        position: relative;
-      }
-
-      header,
-      .content-container {
-        border-bottom: 1px solid var(--black-secondary);
-      }
-      hr {
-        border: 1px solid var(--color-secondary);
-        margin: var(--spacing-md) auto;
-        width: calc(var(--content-width) / 1.5);
-      }
-      .hero-image {
-        width: 100%;
-        overflow: hidden;
-        border-radius: var(--border-radius-sm);
-        opacity: 0.8;
-      }
-
-      .hero-image img {
-        width: 100%;
-        height: auto;
-        border-radius: var(--border-radius-md);
-      }
-
-      .prose {
-        padding: var(--spacing-md);
-      }
-      .date {
-        font-size: var(--font-size-small);
-        color: var(--color-secondary);
-        text-align: center;
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .last-updated-on {
-        font-style: italic;
-        display: block;
-        margin-top: var(--spacing-xs);
-      }
-
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-xs);
-        justify-content: center;
-        margin-bottom: var(--spacing-md);
-      }
-
-      .tag {
-        /* background-color: var(--color-primary); */
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border: 1px solid var(--color-primary);
-        border-radius: var(--border-radius-md);
-        font-family: var(--font-family-mono);
-        font-size: var(--font-size-small);
-        color: var(--color-primary);
-      }
-
-      .content-container {
-        margin-bottom: var(--spacing-lg);
-      }
-
-      .related-posts {
-        margin-top: var(--spacing-lg);
-      }
-
-      .related-posts h3 {
-        font-size: var(--h3-size);
-        margin-bottom: var(--spacing-sm);
-        text-align: left;
-      }
-
-      .related-posts ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      .related-posts li {
-        margin-bottom: var(--spacing-sm);
-        text-transform: uppercase;
-      }
-
-      .related-posts a {
-        color: var(--color-secondary);
-        font-size: var(--font-size-small);
-        font-family: var(--font-family-mono);
-        text-decoration: none;
-      }
-
-      .related-posts a:hover {
-        text-decoration: underline;
-      }
-
-      .related-posts-date {
-        font-weight: 100;
-      }
-    </style>
   </head>
   <body>
     <Header />
@@ -159,14 +48,14 @@ const readingTime = estReadingTime(content)
           <h1>{title}</h1>
           <div class="date">
             <small>
-              Published on <strong> {formattedDate({ date: new Date(pubDate) })}</strong> | Author: <b
+              Published: <strong> {formattedDate({ date: pubDate })}</strong> | Author: <b
                 >{author}</b
               >
               | Estimated reading time: <b>{readingTime}</b> min
               {
                 updatedDate && (
                   <div class="last-updated-on">
-                    Last updated on {formattedDate({ date: new Date(updatedDate) })}
+                    Last updated on {formattedDate({ date: updatedDate })}
                   </div>
                 )
               }
@@ -219,3 +108,115 @@ const readingTime = estReadingTime(content)
     <Footer />
   </body>
 </html>
+
+<style>
+  body {
+    background-color: var(--color-prose);
+  }
+  h1 {
+    font-size: var(--h1-size);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+  }
+  main {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: auto;
+    position: relative;
+  }
+
+  header,
+  .content-container {
+    border-bottom: 1px solid var(--black-secondary);
+  }
+  hr {
+    border: 1px solid var(--color-secondary);
+    margin: var(--spacing-md) auto;
+    width: calc(var(--content-width) / 1.5);
+  }
+  .hero-image {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+    opacity: 0.8;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+  }
+
+  .prose {
+    padding: var(--spacing-md);
+  }
+  .date {
+    font-size: var(--font-size-small);
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .last-updated-on {
+    font-style: italic;
+    display: block;
+    margin-top: var(--spacing-xs);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tag {
+    /* background-color: var(--color-primary); */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-small);
+    color: var(--color-primary);
+  }
+
+  .content-container {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .related-posts {
+    margin-top: var(--spacing-lg);
+  }
+
+  .related-posts h3 {
+    font-size: var(--h3-size);
+    margin-bottom: var(--spacing-sm);
+    text-align: left;
+  }
+
+  .related-posts ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .related-posts li {
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+  }
+
+  .related-posts a {
+    color: var(--color-secondary);
+    font-size: var(--font-size-small);
+    font-family: var(--font-family-mono);
+    text-decoration: none;
+  }
+
+  .related-posts a:hover {
+    text-decoration: underline;
+  }
+
+  .related-posts-date {
+    font-weight: 100;
+  }
+</style>
