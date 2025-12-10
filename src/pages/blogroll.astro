@@ -5,6 +5,11 @@ import BlogrollCard from '../components/BlogrollCard.astro'
 import { SITE_TITLE } from '../consts'
 
 const blogroll = await getCollection('blogroll')
+const sortedBlogroll = blogroll
+  .slice()
+  .sort((a, b) =>
+    (a.data.title ?? '').localeCompare(b.data.title ?? '', undefined, { sensitivity: 'base' })
+  )
 ---
 
 <MainLayout title={`Blog'n'roll | ${SITE_TITLE}`}>
@@ -26,7 +31,7 @@ const blogroll = await getCollection('blogroll')
   </div>
   <div class="blogroll-grid">
     {
-      blogroll.map((blog) => (
+      sortedBlogroll.map((blog) => (
         <BlogrollCard
           title={blog.data.title}
           description={blog.data.description}
