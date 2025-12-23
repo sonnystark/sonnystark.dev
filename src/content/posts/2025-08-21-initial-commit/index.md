@@ -4,7 +4,7 @@ author: 'Sonny Stark'
 description: 'The very first post! An attrmpt at welcoming you all and a first glimpse into my brain and its rants. The anxiety of writing and the pressure of living up to your own high standards.'
 pubDate: '2025-08-21'
 tags: ['ranting', 'writing', 'launch']
-heroImage: '../../assets/posts/rocketlaunch.png'
+heroImage: './rocketlaunch.png'
 ---
 
 ## An interesting journey
